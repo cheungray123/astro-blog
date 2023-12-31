@@ -1,0 +1,38 @@
+---
+import Container from '@/components/Container.astro'
+import Hero from '@/components/Hero.astro'
+import { SITE, SITE_CONFIG } from '@/config'
+import Layout from '@/layouts/Layout.astro'
+import type { METADATA } from '@/types'
+import { formatDate, getAllPosts } from '@/utils'
+const posts = await getAllPosts()
+const least = posts.slice(0, SITE_CONFIG.LEAST_POSTS)
+const SEO: METADATA = {
+    title: SITE.title,
+    description: SITE.description,
+}
+---
+
+<Layout {SEO}>
+    <Container>
+        <Hero
+            title={SITE.title}
+            subtitle={SITE.description}
+        />
+        {
+            least.map((post) => (
+                <article class='py-4'>
+                    <a
+                        href={`/post/${post.slug}`}
+                        class='hover:text-blue-500'
+                        aria-label={post.data.title}>
+                        <h2 class='text-2xl'>{post.data.title}</h2>
+                        <time datetime={post.data.pubDate.toDateString()}>
+                            {formatDate(post.data.pubDate)}
+                        </time>
+                    </a>
+                </article>
+            ))
+        }
+    </Container>
+</Layout>

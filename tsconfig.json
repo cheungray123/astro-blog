@@ -1,0 +1,13 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "pretty": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@/config": ["./site.config.ts"]
+        }
+    },
+    "extends": "astro/tsconfigs/strict",
+    "exclude": ["node_modules", "dist", ".vscode", ".astro"]
+}

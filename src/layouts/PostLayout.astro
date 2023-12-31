@@ -1,0 +1,31 @@
+---
+import Container from '@/components/Container.astro'
+import Layout from '@/layouts/Layout.astro'
+import type { METADATA, posts } from '@/types'
+import { formatDate } from '@/utils'
+interface Props {
+    post: posts[number]
+}
+const { post } = Astro.props
+const { title, description, pubDate } = post.data
+const SEO: METADATA = {
+    title: title,
+    description: description || post.body.substring(0, 160),
+}
+---
+
+<Layout {SEO}>
+    <Container>
+        <article>
+            <div class='flex min-h-40 flex-col items-center justify-center'>
+                <h2 class='text-2xl'>{title}</h2>
+                <time datetime={pubDate.toDateString()}>
+                    {formatDate(pubDate)}
+                </time>
+            </div>
+            <div class='prose max-w-none dark:prose-invert'>
+                <slot />
+            </div>
+        </article>
+    </Container>
+</Layout>

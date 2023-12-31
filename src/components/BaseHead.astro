@@ -1,0 +1,29 @@
+---
+import { SITE } from '@/config'
+import '@/styles/style.css'
+import type { METADATA } from '@/types'
+type Props = METADATA
+const { title, description } = Astro.props
+---
+
+<meta charset='utf-8' />
+<meta
+    name='viewport'
+    content='width=device-width'
+/>
+<meta
+    name='generator'
+    content={Astro.generator}
+/>
+<!-- Favicon -->
+<link
+    rel='icon'
+    type='image/svg+xml'
+    href={SITE.favicon}
+/>
+<!-- MataData -->
+<title>{title}</title>
+<meta
+    name='description'
+    content={description}
+/>

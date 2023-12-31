@@ -1,0 +1,21 @@
+---
+import { SITE } from '@/config'
+import Container from './Container.astro'
+import ThemeToggle from './ThemeToggle.astro'
+---
+
+<header class='relative z-10'>
+    <Container>
+        <div class='border-b border-gray-300 py-3 md:py-5'>
+            <div class='flex items-center justify-between'>
+                <a
+                    href='/'
+                    aria-label={SITE.title}
+                    class='text-3xl block'>
+                    {SITE.title}
+                </a>
+                <ThemeToggle />
+            </div>
+        </div>
+    </Container>
+</header>

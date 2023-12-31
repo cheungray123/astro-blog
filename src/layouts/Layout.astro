@@ -1,0 +1,21 @@
+---
+import BaseHead from '@/components/BaseHead.astro'
+import Header from '@/components/Header.astro'
+import type { METADATA } from '@/types'
+type Props = {
+    SEO:METADATA
+}
+const { SEO } = Astro.props
+---
+
+<!doctype html>
+<html lang='en'>
+    <head>
+        <BaseHead {...SEO} />
+    </head>
+    <body
+        class='bg-white text-gray-900 antialiased dark:bg-gray-900 dark:text-gray-200'>
+        <Header />
+        <slot />
+    </body>
+</html>
